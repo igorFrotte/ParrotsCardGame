@@ -1,6 +1,7 @@
 let nCartas = 1;
 let cartas = [];
 let cont = 0;
+let seg = 0;
 
 while(nCartas%2 !== 0 || nCartas<4 || nCartas>14){
     nCartas = Number(prompt("Quantas cartas de 4 a 14 você quer? (apenas números pares)"));
@@ -22,12 +23,21 @@ for(let a = 0; a<nCartas;a++){
     </div>`;
 }
 
+
+setInterval(function () {
+    if(nCartas !== 1){
+        seg += 1;
+        document.querySelector(".relogio").innerHTML = seg;
+    }
+}, 1000);
+
+
 function selecionar (elemento) {
-    cont += 1;
     const pai = elemento.parentNode;
     let viradas = document.querySelectorAll(".card.virada");
 
     if(viradas.length < 2){
+        cont += 1;
         virar(pai);
         verificar();
     }
@@ -47,6 +57,7 @@ function virar(elemento){
 
 function verificar(){
     let viradas = document.querySelectorAll(".card.virada");
+    let pergunta = "";
     
     if(viradas.length == 2){
         if(viradas[0].querySelector(".id").innerHTML == viradas[1].querySelector(".id").innerHTML){
@@ -58,11 +69,18 @@ function verificar(){
             setTimeout(function () {
                 virar(viradas[0]);
                 virar(viradas[1]);
-              }, 1000);
+            }, 1000);
         }
     }
     if(document.querySelectorAll(".card.certa").length == nCartas){
-        alert("Você ganhou em " + cont + " jogadas!");
+        alert("Você ganhou em " + cont + " jogadas! Em "+ seg +" segundos");
+        while(pergunta !== "sim" && pergunta !== "não"){
+            nCartas = 1;
+            pergunta = prompt("Deseja jogar novamente? (sim ou não)");
+            if(pergunta === "sim"){
+                document.location.reload(true);
+            }
+        }
     }
 }
 

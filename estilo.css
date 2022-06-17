@@ -58,6 +58,21 @@ img {
 }
 .id{
     display: none;
+} 
+.relogio{
+    position: fixed;
+    top: 80px;
+    right: 60px;
+    width: 60px;
+    height: 30px;
+    transform: translateX(60px);
+    background-color: rgba(10, 10, 10, 0.6);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    color : white;
+    display: flex;
+    align-items: center;
+    padding-left: 10px ;
 }
 
 
