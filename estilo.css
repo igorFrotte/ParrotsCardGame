@@ -64,7 +64,7 @@ img {
 
 @media (max-width: 335px) {
     .pagina {
-        display: initial;
+        width: 280px;
     }
     .titulo {
         width: 312px;
