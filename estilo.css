@@ -22,6 +22,7 @@ body {
     margin: 30px;
 }
 .pagina {
+    width: 900px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
