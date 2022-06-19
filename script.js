@@ -24,11 +24,9 @@ for(let a = 0; a<nCartas;a++){
 }
 
 
-setInterval(function () {
-    if(nCartas !== 1){
+let idInt = setInterval(function () {
         seg += 1;
         document.querySelector(".relogio").innerHTML = seg;
-    }
 }, 1000);
 
 
@@ -73,14 +71,16 @@ function verificar(){
         }
     }
     if(document.querySelectorAll(".card.certa").length == nCartas){
-        alert("Você ganhou em " + cont + " jogadas! Em "+ seg +" segundos");
-        while(pergunta !== "sim" && pergunta !== "não"){
-            nCartas = 1;
-            pergunta = prompt("Deseja jogar novamente? (sim ou não)");
-            if(pergunta === "sim"){
-                document.location.reload(true);
+        clearInterval(idInt);
+        setTimeout(function () {
+            alert("Você ganhou em " + cont + " jogadas! Em "+ seg +" segundos");
+            while(pergunta !== "sim" && pergunta !== "não"){
+                pergunta = prompt("Deseja jogar novamente? (sim ou não)");
+                if(pergunta === "sim"){
+                    document.location.reload(true);
+                }
             }
-        }
+        }, 500);
     }
 }
 
